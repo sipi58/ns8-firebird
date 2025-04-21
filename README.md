@@ -1,4 +1,4 @@
-# ns8-kickstart
+# ns8-firebird
 
 This is a template module for [NethServer 8](https://github.com/NethServer/ns8-core).
 To start a new module from it:
