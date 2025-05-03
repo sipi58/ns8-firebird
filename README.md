@@ -1,32 +1,8 @@
 # ns8-firebird
 
-This is a template module for [NethServer 8](https://github.com/NethServer/ns8-core).
-To start a new module from it:
+Firebird is an open-source SQL relational database management system that supports Linux, Microsoft Windows, macOS and other Unix platforms. The database forked from Borland's open source edition of InterBase in 2000 but the code has been largely rewritten since Firebird 1.5.
 
-1. Click on [Use this template](https://github.com/NethServer/ns8-firebird/generate).
-   Name your repo with `ns8-` prefix (e.g. `ns8-mymodule`). 
-   Do not end your module name with a number, like ~~`ns8-baaad2`~~!
-
-1. Clone the repository, enter the cloned directory and
-   [configure your GIT identity](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup#_your_identity)
-
-1. Rename some references inside the repo:
-   ```
-   modulename=$(basename $(pwd) | sed 's/^ns8-//')
-   git mv imageroot/systemd/user/firebird.service imageroot/systemd/user/${modulename}.service
-   git mv tests/firebird.robot tests/${modulename}.robot
-   sed -i "s/firebird/${modulename}/g" $(find .github/ * -type f)
-   git commit -a -m "Repository initialization"
-   ```
-
-1. Edit this `README.md` file, by replacing this section with your module
-   description
-
-1. Adjust `.github/workflows` to your needs. `clean-registry.yml` might
-   need the proper list of image names to work correctly. Unused workflows
-   can be disabled from the GitHub Actions interface.
-
-1. Commit and push your local changes
+This module is based on Firebird version 3.0.11.
 
 ## Install
 
