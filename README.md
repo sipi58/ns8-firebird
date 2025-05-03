@@ -2,7 +2,7 @@
 
 Firebird is an open-source SQL relational database management system that supports Linux, Microsoft Windows, macOS and other Unix platforms. The database forked from Borland's open source edition of InterBase in 2000 but the code has been largely rewritten since Firebird 1.5.
 
-This module is based on Firebird version 3.0.11.
+This module is based on Firebird RDBMS version 3.0.11.
 
 ## Install
 
