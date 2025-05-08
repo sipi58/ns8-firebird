@@ -26,7 +26,7 @@ ExecStart=/usr/bin/podman run \
        --sdnotify=conmon \
        --replace \
        --detach \
-       --name firebird-app \
+       --name firebird \
        -e FIREBIRD_DATABASE_DEFAULT_CHARSET=ISO-8859-2 \
        -e TZ=Europe/Budapest \
        -v firebird-data:/var/lib/firebird/data:Z \
