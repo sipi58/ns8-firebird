@@ -31,7 +31,8 @@ ExecStart=/usr/bin/podman run \
        -e TZ=Europe/Budapest \
        -v firebird-data:/var/lib/firebird/data:Z \
        -v firebird-config:/opt/firebird:Z \
-       -p 3050:3050 docker.io/firebirdsql/firebird:3.0.11
+       -p 3050:3050 \
+       docker.io/firebirdsql/firebird:3.0.11
 ExecStop=/usr/bin/podman stop \
        --ignore -t 10 \
        --cidfile=%t/%n.ctr-id
