@@ -1,9 +1,9 @@
 {
-  "name": "firebird",
+  "name": "Firebird",
   "description": {
-    "en": "My firebird module"
+    "en": "My Firebird module"
   },
-  "categories": [],
+  "categories": ["database"],
   "authors": [
     {
       "name": "Name Surname",
