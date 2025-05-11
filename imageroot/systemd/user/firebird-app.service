@@ -15,29 +15,24 @@ After=firebird.service
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
 EnvironmentFile=%S/state/environment
+EnvironmentFile=-%S/state/smarthost.env
 WorkingDirectory=%S/state
 Restart=always
 TimeoutStopSec=70
 ExecStartPre=/bin/rm -f %t/firebird-app.pid %t/firebird-app.ctr-id
-ExecStart=/usr/bin/podman run \
-       --cidfile %t/firebird-app.ctr-id \
-       --cgroups=no-conmon \
-       --pod-id-file %t/firebird.pod-id --replace -d --name firebird-app \
-       --env-file=%S/state/environment \
-       -e FIREBIRD_DATABASE_DEFAULT_CHARSET=ISO-8859-2 \
-       -e TZ=Europe/Budapest \
-       -v firebird-data:/var/lib/firebird/data:Z \
-       -v firebird-config:/opt/firebird:Z \
-       docker.io/firebirdsql/firebird:3.0.11
-ExecStop=/usr/bin/podman stop \
-       --ignore -t 10 \
-       --cidfile=%t/firebird-app.ctr-id
+ExecStartPre=-runagent discover-smarthost
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/firebird-app.pid \
+    --cidfile %t/firebird-app.ctr-id --cgroups=no-conmon \
+    --pod-id-file %t/firebird.pod-id --replace -d --name  firebird-app \
+    -e FIREBIRD_DATABASE_DEFAULT_CHARSET=ISO-8859-2 \
+    -e TZ=Europe/Budapest \
+    -v firebird-data:/var/lib/firebird/data:Z \
+    -v firebird-config:/opt/firebird:Z \
+    docker.io/firebirdsql/firebird:3.0.11
+ExecStop=/usr/bin/podman stop --ignore --cidfile %t/firebird-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP firebird-app
 SyslogIdentifier=%u
-ExecStopPost=/usr/bin/podman rm \
-       -f \
-       --ignore -t 10 \
-       --cidfile=%t/firebird-app.ctr-id
+ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/firebird-app.ctr-id
 PIDFile=%t/firebird-app.pid
 Type=forking
 
