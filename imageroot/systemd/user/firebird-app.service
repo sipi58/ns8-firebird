@@ -1,0 +1,45 @@
+#
+# Copyright (C) 2023 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+#
+# This systemd unit starts a firebird instance using Podman.
+# Most parts of this file come from podman-generate-systemd.
+#
+[Unit]
+Description=Podman firebird-app.service
+BindsTo=firebird.service
+After=firebird.service
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=always
+TimeoutStopSec=70
+ExecStartPre=/bin/rm -f %t/firebird-app.pid %t/firebird-app.ctr-id
+ExecStart=/usr/bin/podman run \
+       --cidfile %t/firebird-app.ctr-id \
+       --cgroups=no-conmon \
+       --pod-id-file %t/firebird.pod-id --replace -d --name firebird-app \
+       --detach \
+       -e FIREBIRD_DATABASE_DEFAULT_CHARSET=ISO-8859-2 \
+       -e TZ=Europe/Budapest \
+       -v firebird-data:/var/lib/firebird/data:Z \
+       -v firebird-config:/opt/firebird:Z \
+       -p 3050:3050 \
+       docker.io/firebirdsql/firebird:3.0.11
+ExecStop=/usr/bin/podman stop \
+       --ignore -t 10 \
+       --cidfile=%t/firebird-app.ctr-id
+ExecReload=/usr/bin/podman kill -s HUP firebird-app
+SyslogIdentifier=%u
+ExecStopPost=/usr/bin/podman rm \
+       -f \
+       --ignore -t 10 \
+       --cidfile=%t/firebird-app.ctr-id
+PIDFile=%t/firebird-app.pid
+Type=forking
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target
