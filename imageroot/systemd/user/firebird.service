@@ -10,7 +10,7 @@
 [Unit]
 Description=Podman firebird.service
 Requires=firebird-app.service
-After=firebird-app.service
+Before=firebird-app.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
@@ -19,18 +19,13 @@ Restart=always
 TimeoutStopSec=70
 ExecStartPre=/bin/rm -f %t/firebird.pid %t/firebird.pod-id
 ExecStartPre=/usr/bin/podman pod create --infra-conmon-pidfile %t/firebird.pid \
-       --pod-id-file %t/firebird.pod-id \
-       --name firebird \
-       -p 3050:3050 \
-       -- replace
+    --pod-id-file %t/firebird.pod-id \
+    --name firebird \
+    --publish 3050:3050 \
+    --replace
 ExecStart=/usr/bin/podman pod start --pod-id-file %t/firebird.pod-id
-ExecStop=/usr/bin/podman pod stop \
-       --ignore -t 10 \
-       --pod-id-file %t/firebird.pod-id
-ExecStopPost=/usr/bin/podman pod rm \
-       -f \
-       --ignore -t 10 \
-       --pod-id-file %t/firebird.pod-id
+ExecStop=/usr/bin/podman pod stop --ignore --pod-id-file %t/firebird.pod-id -t 10
+ExecStopPost=/usr/bin/podman pod rm --ignore -f --pod-id-file %t/firebird.pod-id
 PIDFile=%t/firebird.pid
 Type=forking
 
