@@ -17,9 +17,9 @@ Environment=PODMAN_SYSTEMD_UNIT=%n
 EnvironmentFile=-%S/state/environment
 Restart=always
 TimeoutStopSec=70
-ExecStartPre=/bin/rm -f %t/firebird.id %t/firebird.ctr-id
+ExecStartPre=/bin/rm -f %t/firebird.pid %t/firebird.pod-id
 ExecStartPre=/usr/bin/podman pod create --infra-conmon-pidfile %t/firebird.pid \
-       --pod-id-file %t/mariadb.pod-id \
+       --pod-id-file %t/firebird.pod-id \
        --name firebird \
        -p 3050:3050 \
        -- replace

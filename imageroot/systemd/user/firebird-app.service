@@ -23,7 +23,7 @@ ExecStart=/usr/bin/podman run \
        --cidfile %t/firebird-app.ctr-id \
        --cgroups=no-conmon \
        --pod-id-file %t/firebird.pod-id --replace -d --name firebird-app \
-       --detach \
+       --env-file=%S/state/environment \
        -e FIREBIRD_DATABASE_DEFAULT_CHARSET=ISO-8859-2 \
        -e TZ=Europe/Budapest \
        -v firebird-data:/var/lib/firebird/data:Z \
@@ -40,7 +40,6 @@ ExecStopPost=/usr/bin/podman rm \
        --cidfile=%t/firebird-app.ctr-id
 PIDFile=%t/firebird-app.pid
 Type=forking
-NotifyAccess=all
 
 [Install]
 WantedBy=default.target
