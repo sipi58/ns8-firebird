@@ -14,6 +14,7 @@ After=firebird-app.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
+EnvironmentFile=-%S/state/environment
 Restart=always
 TimeoutStopSec=70
 ExecStartPre=/bin/rm -f %t/firebird.id %t/firebird.ctr-id
