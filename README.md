@@ -8,7 +8,7 @@ This module is based on Firebird RDBMS version 3.0.11.
 
 Instantiate the module with:
 
-    add-module ghcr.io/nethserver/firebird:latest 1
+    add-module ghcr.io/sipi58/firebird:latest 1
 
 The output of the command will return the instance name.
 Output example:
