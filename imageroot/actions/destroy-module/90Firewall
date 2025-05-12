@@ -5,8 +5,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
-import agent
 import os
+import agent
 
 agent.remove_public_service(os.environ['MODULE_ID'])
 
