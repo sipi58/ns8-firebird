@@ -7036,10 +7036,10 @@ prettier@^1.18.2:
   resolved "https://registry.npmmirror.com/prettier/download/prettier-1.19.1.tgz?cache=0&sync_timestamp=1624696259185&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fprettier%2Fdownload%2Fprettier-1.19.1.tgz"
   integrity sha1-99f1/4qc2HKnvkyhQglZVqYHl8s=
 
-prettier@^2.2.1:
-  version "2.3.2"
-  resolved "https://registry.npmmirror.com/prettier/download/prettier-2.3.2.tgz?cache=0&sync_timestamp=1624696259185&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fprettier%2Fdownload%2Fprettier-2.3.2.tgz"
-  integrity sha1-7ygKBewlNxLkhiM9tcbyNEHnNC0=
+prettier@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.6.0.tgz#18ec98d62cb0757a5d4eab40253ff3e6d0fc8dea"
+  integrity sha512-ujSB9uXHJKzM/2GBuE0hBOUgC77CN3Bnpqa+g80bkv3T3A93wL/xlzDATHhnhkzifz/UE2SNOvmbTz5hSkDlHw==
 
 pretty-error@^2.0.2:
   version "2.1.2"
