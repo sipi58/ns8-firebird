@@ -38,6 +38,42 @@
                 <div>{{ $t("settings.password_tips") }}</div>
               </template>
             </NsTextInput>
+            <NsTextInput
+              :label="$t('settings.charset')"
+              placeholder="ISO-8859-2"
+              v-model.trim="charset"
+              class="mg-bottom"
+              :invalid-message="$t(error.charset)"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              ref="charset"
+              tooltipAlignment="center"
+              tooltipDirection="right"
+            >
+            </NsTextInput>
+            <NsTextInput
+              :label="$t('settings.port')"
+              placeholder="3050"
+              v-model.trim="port"
+              class="mg-bottom"
+              :invalid-message="$t(error.port)"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              ref="port"
+              tooltipAlignment="center"
+              tooltipDirection="right"
+            >
+            </NsTextInput>
+            <NsTextInput
+              :label="$t('settings.tz')"
+              placeholder="Europe/Budapest"
+              v-model.trim="tz"
+              class="mg-bottom"
+              :invalid-message="$t(error.tz)"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              ref="tz"
+              tooltipAlignment="center"
+              tooltipDirection="right"
+            >
+            </NsTextInput>
             <cv-toggle
               value="letsEncrypt"
               :label="$t('settings.lets_encrypt')"
@@ -144,6 +180,9 @@ export default {
       },
       urlCheckInterval: null,
       host: "",
+      charset: "",
+      port: "",
+      tz: "",
       isLetsEncryptEnabled: false,
       isHttpToHttpsEnabled: true,
       tcp_port_firebird: 3050,
@@ -222,6 +261,9 @@ export default {
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
       this.host = config.host;
+      this.charset = config.charset;
+      this.port = config.port;
+      this.tz = config.tz;
       this.isLetsEncryptEnabled = config.lets_encrypt;
       this.isHttpToHttpsEnabled = config.http2https;
       this.tcp_port_firebird = config.tcp_port_firebird;
@@ -290,6 +332,9 @@ export default {
           action: taskAction,
           data: {
             host: this.host,
+            charset: this.charset,
+            port: this.port,
+            tz: this.tz,
             lets_encrypt: this.isLetsEncryptEnabled,
             http2https: this.isHttpToHttpsEnabled,
           },
