@@ -1,8 +1,57 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "configure-module input",
-    "$id": "http://schema.nethserver.org/firebird/configure-module-input.json",
+    "title": "Configure firebird",
+    "$id": "http://nethserver.org/json-schema/task/input/firebird/configure-module",
     "description": "Configure firebird",
-    "examples": [],
-    "type": "object"
+    "examples": [
+        {
+            "host": "firebird.domain.org",
+            "http2https": true,
+            "lets_encrypt": true
+        }
+    ],
+    "type": "object",
+    "required": [
+        "charset",
+        "port",
+        "tz",
+        "host",
+        "http2https",
+        "lets_encrypt"
+    ],
+    "properties": {
+        "host": {
+            "type": "string",
+            "description": "Charset for the application, like 'UTF8",
+            "format": "charset",
+            "pattern": "\\."
+        },
+            "type": "string",
+            "description": "TCP port for the application, like '3050",
+            "format": "port",
+            "pattern": "\\."
+        },
+        "http2https": {
+            "type": "string",
+            "description": "Time zone for the application, like 'Europe/Budapest",
+            "format": "tz",
+            "pattern": "\\."
+        }
+        "host": {
+            "type": "string",
+            "description": "Host name for the application, like 'firebird.domain.org'",
+            "format": "hostname",
+            "pattern": "\\."
+        },
+        "lets_encrypt": {
+            "type": "boolean",
+            "title": "Let's Encrypt certificate",
+            "description": "Request a valid Let's Encrypt certificate."
+        },
+        "http2https": {
+            "type": "boolean",
+            "title": "HTTP to HTTPS redirection",
+            "description": "Redirect all the HTTP requests to HTTPS"
+        }
+    }
 }
