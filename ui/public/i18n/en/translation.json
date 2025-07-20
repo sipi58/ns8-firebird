@@ -24,7 +24,20 @@
         "title": "Settings",
         "configure_instance": "Configure {instance}",
         "save": "Save",
-        "test_field": "Test field"
+        "pgadmin_fqdn": "Firebird hostname (FQDN)",
+        "lets_encrypt": "Request LE Certificate",
+        "http_to_https": "Force HTTPS",
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "advanced": "Advanced",
+        "configuring": "Configuring",
+        "instance_configuration": "Configure Firebird",
+        "tcp_port_pgsql": "Firebird Connection TCP Port",
+        "tcp_port_pgsql_tcp_port_tips": "The TCP port is restricted to the cluster network, meaning it is not open to the public and can only be accessed from within the cluster with the internal wiregard IP for example 10.5.4.1",
+        "domain_already_used_in_traefik": "Domain already used in traefik",
+        "host_pattern": "Must be a valid fully qualified domain name",
+        "host_format": "Must be a valid fully qualified domain name",
+        "password_tips": "Default login and password are 'admin@nethserver.org' and 'Nethesis,1234', change them as soon as possible"
     },
     "about": {
         "title": "About"
