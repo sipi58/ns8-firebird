@@ -14,7 +14,7 @@
     "type": "object",
     "required": [
     "charset",
-    "port,"
+    "port",
     "tz",
     "host",
         "http2https",
