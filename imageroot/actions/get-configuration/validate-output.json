@@ -24,18 +24,18 @@
     "properties": {
         "charset": {
             "type": "string",
-            "description": "Charset for the application, like 'UTF8",
-            "format": "idn-hostname"
+            "title": "Charset for the database",
+            "description": "Charset for the database, like 'UTF8",
         },
         "port": {
             "type": "string",
+            "title": "CP port for the application",
             "description": "TCP port for the application, like '3050",
-            "format": "idn-hostname"
         },
         "tz": {
             "type": "string",
+            "title": "Time zone for the application",
             "description": "Time zone for the application, like 'Europe/Budapest",
-            "format": "idn-hostname"
         },
         "host": {
             "type": "string",
