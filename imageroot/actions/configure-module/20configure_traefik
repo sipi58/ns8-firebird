@@ -19,9 +19,9 @@ data = json.load(sys.stdin)
 host = data.get("host")
 h2hs = data.get("http2https", True)
 le = data.get("lets_encrypt", False)
-charset = data.get("charset", TRUE)
-port = data.get("port", TRUE)
-tz = data.get("tz", TRUE)
+charset = data.get("charset", True)
+port = data.get("port", True)
+tz = data.get("tz", True)
 
 # Talk with agent using file descriptor.
 # Setup configuration from user input.
