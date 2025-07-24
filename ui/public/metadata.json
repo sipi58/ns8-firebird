@@ -13,7 +13,7 @@
   "docs": {
     "documentation_url": "https://docs.firebird.com/",
     "bug_url": "https://github.com/NethServer/dev",
-    "code_url": "https://github.com/author/ns8-firebird"
+    "code_url": "https://github.com/sipi58/ns8-firebird"
   },
   "source": "ghcr.io/nethserver/firebird"
 }

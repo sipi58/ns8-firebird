@@ -20,38 +20,39 @@
         "lets_encrypt"
     ],
     "properties": {
-        "host": {
+        "charset": {
             "type": "string",
             "description": "Charset for the application, like 'UTF8",
             "format": "charset",
             "pattern": "\\."
         },
+         "port": {
             "type": "string",
             "description": "TCP port for the application, like '3050",
             "format": "port",
             "pattern": "\\."
         },
-        "http2https": {
+        "tz": {
             "type": "string",
             "description": "Time zone for the application, like 'Europe/Budapest",
             "format": "tz",
             "pattern": "\\."
-        }
+        },
         "host": {
             "type": "string",
             "description": "Host name for the application, like 'firebird.domain.org'",
             "format": "hostname",
             "pattern": "\\."
         },
-        "lets_encrypt": {
-            "type": "boolean",
-            "title": "Let's Encrypt certificate",
-            "description": "Request a valid Let's Encrypt certificate."
-        },
         "http2https": {
             "type": "boolean",
             "title": "HTTP to HTTPS redirection",
             "description": "Redirect all the HTTP requests to HTTPS"
+        },
+        "lets_encrypt": {
+            "type": "boolean",
+            "title": "Let's Encrypt certificate",
+            "description": "Request a valid Let's Encrypt certificate."
         }
     }
 }
