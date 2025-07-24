@@ -24,25 +24,22 @@
             "type": "string",
             "description": "Charset for the application, like 'UTF8",
             "format": "charset",
-            "pattern": "\\."
         },
          "port": {
             "type": "string",
             "description": "TCP port for the application, like '3050",
             "format": "port",
-            "pattern": "\\."
+            "pattern": "[0-9]{4}"
         },
         "tz": {
             "type": "string",
             "description": "Time zone for the application, like 'Europe/Budapest",
             "format": "tz",
-            "pattern": "\\."
         },
         "host": {
             "type": "string",
             "description": "Host name for the application, like 'firebird.domain.org'",
             "format": "hostname",
-            "pattern": "\\."
         },
         "http2https": {
             "type": "boolean",
