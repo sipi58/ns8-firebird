@@ -36,8 +36,8 @@ buildah add "${container}" imageroot /imageroot
 buildah add "${container}" ui/dist /ui
 # Setup the entrypoint, ask to reserve one TCP port with the label and set a rootless container
 buildah config --entrypoint=/ \
-    --label="org.nethserver.authorizations=traefik@node:routeadm" \
-    --label="org.nethserver.tcp-ports-demand=1" \
+    --label="org.nethserver.authorizations=traefik@node:routeadm node:fwadm" \
+    --label="org.nethserver.tcp-ports-demand=0" \
     --label="org.nethserver.rootfull=0" \
     --label="org.nethserver.images=docker.io/firebirdsql/firebird:3.0.11" \
     --label="org.nethserver.authorizations=traefik@node:routeadm node:fwadm" \

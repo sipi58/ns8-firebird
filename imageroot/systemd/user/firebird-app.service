@@ -24,10 +24,14 @@ ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/firebird-app.pid \
     --cidfile %t/firebird-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/firebird.pod-id --replace -d --name  firebird-app \
-    -e FIREBIRD_DATABASE_DEFAULT_CHARSET=ISO-8859-2 \
-    -e TZ=Europe/Budapest \
-    -v firebird-data:/var/lib/firebird/data:Z \
-    -v firebird-config:/opt/firebird:Z \
+#    --env FIREBIRD_ROOT_PASSWORD=Nethesis,1234 \
+#    --env FIREBIRD_USER=admin \
+#    --env FIREBIRD_PASSWORD=Passw0rd \
+#    --env FIREBIRD_DATABASE=mirror.fdb \
+    --env FIREBIRD_DATABASE_DEFAULT_CHARSET=${FIREBIRD_DATABASE_DEFAULT_CHARSET} \
+    --env TZ=${FIREBIRD_TIMEZONE} \
+    --volume firebird-data:/var/lib/firebird/data:z \
+    --volume firebird-config:/opt/firebird:z \
     docker.io/firebirdsql/firebird:3.0.11
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/firebird-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP firebird-app
