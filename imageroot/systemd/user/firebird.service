@@ -21,7 +21,7 @@ ExecStartPre=/bin/rm -f %t/firebird.pid %t/firebird.pod-id
 ExecStartPre=/usr/bin/podman pod create --infra-conmon-pidfile %t/firebird.pid \
     --pod-id-file %t/firebird.pod-id \
     --name firebird \
-    --publish 3050:3050 \
+    --publish ${FIREBIRD_PORT:-3050}:3050 \
     --replace
 ExecStart=/usr/bin/podman pod start --pod-id-file %t/firebird.pod-id
 ExecStop=/usr/bin/podman pod stop --ignore --pod-id-file %t/firebird.pod-id -t 10
