@@ -9,7 +9,7 @@ import os
 import agent
 
 #agent.add_public_service(os.environ['MODULE_ID'], [
-    "3050/tcp", # Standard port for Firebird client connections.
-])
+#    "3050/tcp", # Standard port for Firebird client connections.
+#])
 
 # Ignore exit code
