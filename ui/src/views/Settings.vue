@@ -59,55 +59,11 @@
               tooltipDirection="right"
             >
             </NsTextInput>
-            <cv-toggle
-              value="letsEncrypt"
-              :label="$t('settings.lets_encrypt')"
-              v-model="isLetsEncryptEnabled"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              class="mg-bottom"
-            >
-              <template slot="text-left">{{
-                $t("settings.disabled")
-              }}</template>
-              <template slot="text-right">{{
-                $t("settings.enabled")
-              }}</template>
-            </cv-toggle>
-            <cv-toggle
-              value="httpToHttps"
-              :label="$t('settings.http_to_https')"
-              v-model="isHttpToHttpsEnabled"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              class="mg-bottom"
-            >
-              <template slot="text-left">{{
-                $t("settings.disabled")
-              }}</template>
-              <template slot="text-right">{{
-                $t("settings.enabled")
-              }}</template>
-            </cv-toggle>
             <!-- advanced options -->
             <cv-accordion ref="accordion" class="maxwidth mg-bottom">
               <cv-accordion-item :open="toggleAccordion[0]">
                 <template slot="title">{{ $t("settings.advanced") }}</template>
                 <template slot="content">
-                  <template v-if="tcp_port_firebird">
-                    <span class="mg-bottom">
-                      {{ $t("settings.tcp_port_firebird") }}
-                      <cv-tooltip
-                        alignment="start"
-                        direction="bottom"
-                        :tip="$t('settings.tcp_port_firebird_tcp_port_tips')"
-                        class="info mg-bottom"
-                      >
-                      </cv-tooltip>
-                    </span>
-                    <span>:</span>
-                    <span class="mg-bottom mg-left">
-                      {{ tcp_port_firebird }}
-                    </span>
-                  </template>
                 </template>
               </cv-accordion-item>
             </cv-accordion>
