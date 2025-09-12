@@ -22,22 +22,7 @@
     <cv-row>
       <cv-column>
         <cv-tile light>
-          <cv-form @submit.prevent="configureModule">
-            <NsTextInput
-              :label="$t('settings.firebird_fqdn')"
-              placeholder="firebird.example.org"
-              v-model.trim="host"
-              class="mg-bottom"
-              :invalid-message="$t(error.host)"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              ref="host"
-              tooltipAlignment="center"
-              tooltipDirection="right"
-            >
-              <template slot="tooltip">
-                <div>{{ $t("settings.password_tips") }}</div>
-              </template>
-            </NsTextInput>
+          <cv-form @submit.prevent="configureModule">            
             <NsTextInput
               :label="$t('settings.charset')"
               placeholder="ISO-8859-2"
@@ -74,55 +59,11 @@
               tooltipDirection="right"
             >
             </NsTextInput>
-            <cv-toggle
-              value="letsEncrypt"
-              :label="$t('settings.lets_encrypt')"
-              v-model="isLetsEncryptEnabled"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              class="mg-bottom"
-            >
-              <template slot="text-left">{{
-                $t("settings.disabled")
-              }}</template>
-              <template slot="text-right">{{
-                $t("settings.enabled")
-              }}</template>
-            </cv-toggle>
-            <cv-toggle
-              value="httpToHttps"
-              :label="$t('settings.http_to_https')"
-              v-model="isHttpToHttpsEnabled"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              class="mg-bottom"
-            >
-              <template slot="text-left">{{
-                $t("settings.disabled")
-              }}</template>
-              <template slot="text-right">{{
-                $t("settings.enabled")
-              }}</template>
-            </cv-toggle>
             <!-- advanced options -->
             <cv-accordion ref="accordion" class="maxwidth mg-bottom">
               <cv-accordion-item :open="toggleAccordion[0]">
                 <template slot="title">{{ $t("settings.advanced") }}</template>
                 <template slot="content">
-                  <template v-if="tcp_port_firebird">
-                    <span class="mg-bottom">
-                      {{ $t("settings.tcp_port_firebird") }}
-                      <cv-tooltip
-                        alignment="start"
-                        direction="bottom"
-                        :tip="$t('settings.tcp_port_firebird_tcp_port_tips')"
-                        class="info mg-bottom"
-                      >
-                      </cv-tooltip>
-                    </span>
-                    <span>:</span>
-                    <span class="mg-bottom mg-left">
-                      {{ tcp_port_firebird }}
-                    </span>
-                  </template>
                 </template>
               </cv-accordion-item>
             </cv-accordion>
@@ -179,13 +120,9 @@ export default {
         page: "settings",
       },
       urlCheckInterval: null,
-      host: "",
       charset: "",
       port: "",
       tz: "",
-      isLetsEncryptEnabled: false,
-      isHttpToHttpsEnabled: true,
-      tcp_port_firebird: 3050,
       loading: {
         getConfiguration: false,
         configureModule: false,
@@ -194,8 +131,9 @@ export default {
         getConfiguration: "",
         configureModule: "",
         host: "",
-        lets_encrypt: "",
-        http2https: "",
+        charset: "",
+        port: "",
+        tz: "",
       },
     };
   },
@@ -260,26 +198,21 @@ export default {
     },
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
-      this.host = config.host;
       this.charset = config.charset;
       this.port = config.port;
       this.tz = config.tz;
-      this.isLetsEncryptEnabled = config.lets_encrypt;
-      this.isHttpToHttpsEnabled = config.http2https;
-      this.tcp_port_firebird = config.tcp_port_firebird;
-
       this.loading.getConfiguration = false;
-      this.focusElement("host");
+      this.focusElement("charset");
     },
     validateConfigureModule() {
       this.clearErrors(this);
 
       let isValidationOk = true;
-      if (!this.host) {
-        this.error.host = "common.required";
+      if (!this.charset) {
+        this.error.charset = "common.required";
 
         if (isValidationOk) {
-          this.focusElement("host");
+          this.focusElement("charset");
         }
         isValidationOk = false;
       }
@@ -331,12 +264,9 @@ export default {
         this.createModuleTaskForApp(this.instanceName, {
           action: taskAction,
           data: {
-            host: this.host,
             charset: this.charset,
             port: this.port,
-            tz: this.tz,
-            lets_encrypt: this.isLetsEncryptEnabled,
-            http2https: this.isHttpToHttpsEnabled,
+            tz: this.tz,            
           },
           extra: {
             title: this.$t("settings.instance_configuration", {

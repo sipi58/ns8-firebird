@@ -22,10 +22,9 @@ config = {}
 config["host"] = os.getenv("TRAEFIK_HOST","")
 config["http2https"] = os.getenv("TRAEFIK_HTTP2HTTPS") == "True"
 config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT") == "True"
-#config["tcp_port_firebird"] = os.getenv("TCP_PORT_FIREBIRD")
 config["charset"] = os.getenv("FIREBIRD_DATABASE_DEFAULT_CHARSET")
-#config["port"] = os.getenv("TCP_PORT_FIREBIRD")
-config["tz"] = os.getenv("TZ")
+config["port"] = os.getenv("FIREBIRD_PORT")
+config["tz"] = os.getenv("FIREBIRD_TIMEZONE")
 
 # Dump the configuration to stdout
 json.dump(config, fp=sys.stdout)
