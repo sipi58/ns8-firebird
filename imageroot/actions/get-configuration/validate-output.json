@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Configure Firebird",
+    "$id": "http://nethserver.org/json-schema/task/input/firebird/get-configuration",
+    "description": "Get Firebird settings",
+    "examples": [
+        {
+            "charset": "mattermost.nethserver.org",
+            "port": 3050,
+            "tz": "Europe/Vienna"
+        }
+    ],
+    "type": "object",
+    "required": [
+        "charset",
+        "port",
+        "tz"
+    ],
+    "properties": {
+        "charset": {
+            "type": "string",
+            "description": "The charset used by Firebird"
+        },
+	"port": {
+            "type": "integer",
+            "title": "Firebird port",
+            "minimum": 1,
+            "description": "The port used by Firebird"
+        },
+	"tz": {
+            "type": "string",
+            "title": "Firebird timezone",
+            "description": "The timezone used by Firebird"
+        }
+    }
+}
