@@ -13,4 +13,5 @@ exec 1>&2
 
 touch smarthost.env
 
-systemctl --user enable --now firebird.service
+systemctl --user enable firebird.service
+systemctl --user restart firebird.service firebird-app.service

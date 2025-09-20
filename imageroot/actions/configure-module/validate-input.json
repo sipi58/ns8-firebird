@@ -5,7 +5,7 @@
     "description": "Configure Firebird",
     "examples": [
         {
-            "charset": "mattermost.nethserver.org",
+            "charset": "ISO-8859-2",
             "port": 3050,
             "tz": "Europe/Vienna"
         }
