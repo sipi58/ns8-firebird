@@ -32,7 +32,7 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/firebird-app.pid \
     --env TZ=${FIREBIRD_TIMEZONE} \
     --volume firebird-data:/var/lib/firebird/data:z \
     --volume firebird-config:/opt/firebird:z \
-    docker.io/firebirdsql/firebird:3.0.11
+    ${FIREBIRD_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/firebird-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP firebird-app
 SyslogIdentifier=%u
