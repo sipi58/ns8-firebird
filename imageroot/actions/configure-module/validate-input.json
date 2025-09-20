@@ -22,9 +22,8 @@
             "description": "The charset used by Firebird"
         },
 	"port": {
-            "type": "integer",
+            "type": "string",
             "title": "Firebird port",
-            "minimum": 1,
             "description": "The port used by Firebird"
         },
 	"tz": {
