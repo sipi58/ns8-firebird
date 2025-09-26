@@ -62,7 +62,7 @@
             <cv-toggle
               value="ff"
               :label="$t('settings.ff')"
-              v-model="ffEnabled"
+              v-model="isffEnabled"
               :disabled="loading.getConfiguration || loading.configureModule"
               class="mg-bottom"
             >
@@ -119,7 +119,7 @@ export default {
       charset: "",
       port: "",
       tz: "",
-      ff: "",
+      isffEnabled: "false",
       loading: {
         getConfiguration: false,
         configureModule: false,
