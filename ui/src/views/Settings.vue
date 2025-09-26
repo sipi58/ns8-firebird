@@ -60,9 +60,9 @@
             >
             </NsTextInput>
             <cv-toggle
-              value="letsEncrypt"
-              :label="$t('settings.lets_encrypt')"
-              v-model="isLetsEncryptEnabled"
+              value="ff"
+              :label="$t('settings.ff')"
+              v-model="ffEnabled"
               :disabled="loading.getConfiguration || loading.configureModule"
               class="mg-bottom"
             >
