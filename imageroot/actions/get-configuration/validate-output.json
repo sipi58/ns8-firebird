@@ -14,7 +14,7 @@
     "required": [
         "charset",
         "port",
-        "tz",
+        "tz"
     ],
     "properties": {
         "charset": {
