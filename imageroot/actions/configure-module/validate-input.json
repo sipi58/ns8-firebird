@@ -33,10 +33,9 @@
             "description": "The timezone used by Firebird"
          },
 	"ff": {
-            "type": "string",
+            "type": "boolean",
             "title": "Firebird firewall",
             "description": "Open/Close Firewall port what used by Firebird"
-
          }
     }
 }
