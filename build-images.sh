@@ -40,7 +40,6 @@ buildah config --entrypoint=/ \
     --label="org.nethserver.tcp-ports-demand=0" \
     --label="org.nethserver.rootfull=0" \
     --label="org.nethserver.images=docker.io/firebirdsql/firebird:3.0.11" \
-    --label="org.nethserver.authorizations=traefik@node:routeadm node:fwadm" \
     "${container}"
 # Commit the image
 buildah commit "${container}" "${repobase}/${reponame}"

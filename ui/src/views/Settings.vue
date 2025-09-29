@@ -59,6 +59,20 @@
               tooltipDirection="right"
             >
             </NsTextInput>
+            <cv-toggle
+              value="ff"
+              :label="$t('settings.ff')"
+              v-model="isffEnabled"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              class="mg-bottom"
+            >
+              <template slot="text-left">{{
+                $t("settings.disabled")
+              }}</template>
+              <template slot="text-right">{{
+                $t("settings.enabled")
+              }}</template>
+            </cv-toggle>
             <NsButton
               kind="primary"
               :icon="Save20"
@@ -105,6 +119,7 @@ export default {
       charset: "",
       port: "",
       tz: "",
+      isffEnabled: "false",
       loading: {
         getConfiguration: false,
         configureModule: false,
@@ -116,6 +131,7 @@ export default {
         charset: "",
         port: "",
         tz: "",
+        ff: "",
       },
     };
   },
@@ -183,6 +199,7 @@ export default {
       this.charset = config.charset;
       this.port = config.port;
       this.tz = config.tz;
+      this.ff = config.ff;
       this.loading.getConfiguration = false;
       this.focusElement("charset");
     },
@@ -248,7 +265,8 @@ export default {
           data: {
             charset: this.charset,
             port: this.port,
-            tz: this.tz,            
+            tz: this.tz,
+            ff: this.ff,
           },
           extra: {
             title: this.$t("settings.instance_configuration", {
