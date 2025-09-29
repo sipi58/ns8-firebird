@@ -10,7 +10,7 @@ import agent
 
 firewall = os.getenv("FIREBIRD_FIREWALL") == "True"
 
-if firewall:
+if ff:
   agent.remove_public_service(os.environ['MODULE_ID'])
 else:
   agent.add_public_service(os.environ['MODULE_ID'], [
