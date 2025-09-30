@@ -35,7 +35,7 @@
 	"ff": {
             "type": "boolean",
             "title": "Firebird firewall",
-            "description": "Open/Close Firewall port what used by Firebird"
+            "description": "Firebird port Enable/Disable on Firewall"
         }
     }
 }
