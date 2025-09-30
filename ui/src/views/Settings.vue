@@ -67,10 +67,10 @@
               class="mg-bottom"
             >
               <template slot="text-left">{{
-                $t("settings.disabled")
+                $t("settings.enabled")
               }}</template>
               <template slot="text-right">{{
-                $t("settings.enabled")
+                $t("settings.disabled")
               }}</template>
             </cv-toggle>
             <NsButton
