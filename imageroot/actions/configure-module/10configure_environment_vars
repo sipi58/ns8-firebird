@@ -13,8 +13,14 @@ import agent
 # If parsing fails, output everything to stderr
 data = json.load(sys.stdin)
 
+# FIREBIRD_IMAGE=docker.io/firebirdsql/firebird:3.0.11
+version = data.get("version","3.0.11")
+
+# Set image version
+agent.set_env("FIREBIRD_IMAGE","docker.io/firebirdsql/firebird:"+version)
+
 # Set env vars for firebird
 agent.set_env("FIREBIRD_PORT",data.get("port",3050))
 agent.set_env("FIREBIRD_DATABASE_DEFAULT_CHARSET",data.get("charset","ISO-8859-2"))
 agent.set_env("FIREBIRD_TIMEZONE",data.get("tz","Europe/Budapest"))
-agent.set_env("FIREBIRD_FIREWALL",data.get("ff",False))
+agent.set_env("FIREBIRD_FIREWALL",data.get("ff","False"))
