@@ -24,18 +24,6 @@
         <cv-tile light>
           <cv-form @submit.prevent="configureModule">            
             <NsTextInput
-              :label="$t('settings.version')"
-              placeholder="3.0.11"
-              v-model.trim="version"
-              class="mg-bottom"
-              :invalid-message="$t(error.version)"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              ref="version"
-              tooltipAlignment="center"
-              tooltipDirection="right"
-            >
-            </NsTextInput>
-            <NsTextInput
               :label="$t('settings.charset')"
               placeholder="ISO-8859-2"
               v-model.trim="charset"
@@ -79,10 +67,10 @@
               class="mg-bottom"
             >
               <template slot="text-left">{{
-                $t("settings.enabled")
+                $t("settings.disabled")
               }}</template>
               <template slot="text-right">{{
-                $t("settings.disabled")
+                $t("settings.enabled")
               }}</template>
             </cv-toggle>
             <NsButton
@@ -128,7 +116,6 @@ export default {
         page: "settings",
       },
       urlCheckInterval: null,
-      version: "",
       charset: "",
       port: "",
       tz: "",
@@ -140,7 +127,6 @@ export default {
       error: {
         getConfiguration: "",
         configureModule: "",
-        version: "",
         charset: "",
         port: "",
         tz: "",
@@ -209,7 +195,6 @@ export default {
     },
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
-      this.version = config.version;
       this.charset = config.charset;
       this.port = config.port;
       this.tz = config.tz;
@@ -277,7 +262,6 @@ export default {
         this.createModuleTaskForApp(this.instanceName, {
           action: taskAction,
           data: {
-            version: this.version,
             charset: this.charset,
             port: this.port,
             tz: this.tz,

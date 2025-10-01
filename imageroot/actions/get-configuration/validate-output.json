@@ -33,7 +33,7 @@
             "description": "The timezone used by Firebird"
         },
 	"ff": {
-            "type": "string",
+            "type": "boolean",
             "title": "Firebird firewall",
             "description": "Firebird port Enable/Disable on Firewall"
         }
