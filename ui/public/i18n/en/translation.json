@@ -25,6 +25,7 @@
         "configure_instance": "Configure {instance}",
         "save": "Save",
         "firebird_fqdn": "Firebird hostname (FQDN)",
+        "version": "Firebird Image Version",
         "charset": "Firebird Database Character set",
         "port": "Firebird TCP port",
         "tz": "Firebird server Time zone",
