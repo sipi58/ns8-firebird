@@ -18,6 +18,7 @@ import agent
 config = {}
 
 # Read current configuration from the environment file
+config["version"] = os.getenv("FIREBIRD_VERSION","")
 config["charset"] = os.getenv("FIREBIRD_DATABASE_DEFAULT_CHARSET","")
 config["port"] = os.getenv("FIREBIRD_PORT","")
 config["tz"] = os.getenv("FIREBIRD_TIMEZONE","")
