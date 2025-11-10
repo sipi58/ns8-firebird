@@ -23,7 +23,7 @@
       <cv-column>
         <cv-tile light>
           <cv-form @submit.prevent="configureModule">
-            <NsTextInput
+            <!-- <NsTextInput
               :label="$t('settings.version')"
               placeholder="3.0.11"
               v-model.trim="version"
@@ -34,7 +34,21 @@
               tooltipAlignment="center"
               tooltipDirection="right"
             >
-            </NsTextInput>
+            </NsTextInput> -->
+            <NsComboBox
+              v-model="version"
+              :options="versions_list"
+              auto-highlight
+              :title="$t('settings.version')"
+              :invalid-message="$t(error.version)"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              :label="$t('settings.choose_version')"
+              light
+              tooltipAlignment="start"
+              tooltipDirection="top"
+              ref="version"
+            >
+            </NsComboBox>
             <NsTextInput
               :label="$t('settings.charset')"
               placeholder="ISO-8859-2"
@@ -128,6 +142,7 @@ export default {
         page: "settings",
       },
       urlCheckInterval: null,
+      versions_list: [],
       version: "",
       charset: "",
       port: "",
@@ -209,7 +224,10 @@ export default {
     },
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
-      this.version = config.version;
+      this.versions_list = config.versions_list
+      this.$nextTick(() => {
+        this.version = config.version;
+      });
       this.charset = config.charset;
       this.port = config.port;
       this.tz = config.tz;
