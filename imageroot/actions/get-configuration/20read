@@ -14,10 +14,25 @@ import sys
 import json
 import agent
 
+# fill versions list
+versions = []
+versions.append({
+    "name": "Firebird 3",
+    "label": "Firebird 3",
+    "value": "firebirdsql/firebird:3.0.11",
+})
+versions.append({
+    "name": "Firebird 2.5",
+    "label": "Firebird 2.5",
+    "value": "mladenp87/firebird-2.5-ss:latest",
+})
+
+
 # Prepare return variable
 config = {}
 
 # Read current configuration from the environment file
+config["versions_list"] = versions
 config["version"] = os.getenv("FIREBIRD_VERSION","")
 config["charset"] = os.getenv("FIREBIRD_DATABASE_DEFAULT_CHARSET","")
 config["port"] = os.getenv("FIREBIRD_PORT","")
