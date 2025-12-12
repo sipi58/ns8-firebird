@@ -22,6 +22,7 @@
     <cv-row>
       <cv-column>
         <cv-tile light>
+          <cv-form @submit.prevent="configureModule">
             <NsTextInput
               :label="$t('settings.charset')"
               placeholder="ISO-8859-2"
