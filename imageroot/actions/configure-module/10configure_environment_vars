@@ -14,7 +14,6 @@ import agent
 data = json.load(sys.stdin)
 
 # Set env vars for firebird
-#agent.set_env("FIREBIRD_VERSION",version)
 agent.set_env("FIREBIRD_PORT",data.get("port",3050))
 agent.set_env("FIREBIRD_DATABASE_DEFAULT_CHARSET",data.get("charset","ISO-8859-2"))
 agent.set_env("FIREBIRD_TIMEZONE",data.get("tz","Europe/Budapest"))
