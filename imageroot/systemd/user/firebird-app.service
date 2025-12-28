@@ -24,13 +24,8 @@ ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/firebird-app.pid \
     --cidfile %t/firebird-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/firebird.pod-id --replace -d --name  firebird-app \
-#    --env FIREBIRD_ROOT_PASSWORD=Nethesis,1234 \
-#    --env FIREBIRD_USER=admin \
-#    --env FIREBIRD_PASSWORD=Passw0rd \
-#    --env FIREBIRD_DATABASE=mirror.fdb \
     --env FIREBIRD_DATABASE_DEFAULT_CHARSET=${FIREBIRD_DATABASE_DEFAULT_CHARSET} \
     --env TZ=${FIREBIRD_TIMEZONE} \
-#    --env FF=${FIREBIRD_FIREWALL} \
     --volume firebird-data:/var/lib/firebird/data:z \
     --volume firebird-config:/opt/firebird:z \
     ${FIREBIRD_IMAGE}
