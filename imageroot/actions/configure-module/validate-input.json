@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Configure Firebird",
-    "$id": "http://nethserver.org/json-schema/task/input/mattermost/configure-module",
+    "$id": "http://nethserver.org/json-schema/task/input/firebird/configure-module",
     "description": "Configure Firebird",
     "examples": [
         {
