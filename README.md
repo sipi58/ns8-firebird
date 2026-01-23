@@ -7,11 +7,17 @@ This module is based on Firebird 3.0.11 SuperServer.
 ## Features
 
 • The default user is: SYSDBA, the password is: masterkey
+
 • The default Firebird port is TCP 3050 but you can be changed in Settings
-• The default Firebird database character set you can be changed in Settings.
+
+• The default Firebird database character set you can be changed in Settings
+
 • The Timezone setting of the Firebird server you can be changed in Settings
+
 • Enabling or disabling the Firebird TCP port on the firewall (if disabled, it is still accessible via VPN)
+
 • The location of the databases (VOLUME) is in the default /var/lib/firebird/data directory
+
 • Backup
 
 ## Install
