@@ -22,7 +22,11 @@ This module is based on Firebird 3.0.11 SuperServer.
 
 ## Install
 
-Installation via Software Center is not yet possible.
+Installation via Software Center:
+
+• Add the repository https://raw.githubusercontent.com/sipi58/ns8-nethforge/repomd/ns8/updates/ to the Software Repositories and reload the repositories.
+
+• Install the Firebird module from the Software Center
 
 To install the latest version using CLI:
 
